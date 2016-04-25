@@ -10,10 +10,9 @@ uses
 
 begin
 
-  WriteLn('starting');
-
   try
-    { TODO -oUser -cConsole Main : Insert code here }
+    WriteLn('starting');
+    WriteLn(PChar('Registration complete'));
   except
     on E:Exception do
       Writeln(E.Classname, ': ', E.Message);
