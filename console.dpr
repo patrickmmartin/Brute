@@ -10,6 +10,11 @@ var
   SomeObject : TSomeObject;
   SomeRecord : TSomeRecord;
   SomeClass : TSomeClass;
+
+  X : double = 1.0;
+  Y : SomeFloat = 2.0;
+  Z : SomeNewFloat = 3.0;
+
 begin
 
   WriteLn('starting');
@@ -25,6 +30,18 @@ begin
   finally
     SomeClass.Free;
   end;
+
+  X := 2.0;
+
+  Y := X;
+
+  Z := X;
+
+  X := Z;
+
+  A(X);
+
+  B(Z);
 
   try
     { TODO -oUser -cConsole Main : Insert code here }

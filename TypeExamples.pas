@@ -40,9 +40,34 @@ type TSomeObject = object
   StringField : string;
 end;
 
+type SomeFloat = double;
+
+type SomeNewFloat = type double;
+
+type SubRange = 0..10;
+
+const X = 50; Y = 10;
+
+type Scale = 2 * (X - Y)..(X + Y) * 2;
+
+procedure A(Param : double);
+
+procedure B(Param : SomeNewFloat);
+
 implementation
 
 uses SysUtils;
+
+
+procedure A(Param : double);
+begin
+
+end;
+
+procedure B(Param : SomeNewFloat);
+begin
+
+end;
 
 { TSomeClass }
 
