@@ -43,9 +43,9 @@
 			<DelphiCompile Include="registration.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
-			<DCCReference Include="SomeRegistry.pas"/>
-			<DCCReference Include="SomeProcessor.pas"/>
-			<DCCReference Include="AnotherProcessor.pas"/>
+			<DCCReference Include="depends\AnotherProcessor.pas"/>
+			<DCCReference Include="depends\SomeProcessor.pas"/>
+			<DCCReference Include="depends\SomeRegistry.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

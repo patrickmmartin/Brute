@@ -4,9 +4,9 @@ program registration;
 
 uses
   SysUtils,
-  SomeRegistry in 'SomeRegistry.pas',
-  SomeProcessor in 'SomeProcessor.pas',
-  AnotherProcessor in 'AnotherProcessor.pas';
+  AnotherProcessor in 'depends\AnotherProcessor.pas',
+  SomeProcessor in 'depends\SomeProcessor.pas',
+  SomeRegistry in 'depends\SomeRegistry.pas';
 
 begin
 

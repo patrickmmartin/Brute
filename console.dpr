@@ -4,7 +4,7 @@ program console;
 
 uses
   SysUtils,
-  TypeExamples in 'TypeExamples.pas';
+  TypeExamples in 'types\TypeExamples.pas';
 
 var
   SomeObject : TSomeObject;

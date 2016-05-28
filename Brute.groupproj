@@ -9,6 +9,12 @@
 			<Projects Include="console.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="apackage.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="packaged.dproj">
+				<Dependencies>apackage.dproj</Dependencies>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +41,32 @@
 		<Target Name="console:Make">
 			<MSBuild Targets="Make" Projects="console.dproj"/>
 		</Target>
+		<Target Name="apackage">
+			<MSBuild Projects="apackage.dproj"/>
+		</Target>
+		<Target Name="apackage:Clean">
+			<MSBuild Targets="Clean" Projects="apackage.dproj"/>
+		</Target>
+		<Target Name="apackage:Make">
+			<MSBuild Targets="Make" Projects="apackage.dproj"/>
+		</Target>
+		<Target DependsOnTargets="apackage" Name="packaged">
+			<MSBuild Projects="packaged.dproj"/>
+		</Target>
+		<Target DependsOnTargets="apackage:Clean" Name="packaged:Clean">
+			<MSBuild Targets="Clean" Projects="packaged.dproj"/>
+		</Target>
+		<Target DependsOnTargets="apackage:Make" Name="packaged:Make">
+			<MSBuild Targets="Make" Projects="packaged.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="registration;console"/>
+			<CallTarget Targets="registration;console;apackage;packaged"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="registration:Clean;console:Clean"/>
+			<CallTarget Targets="registration:Clean;console:Clean;apackage:Clean;packaged:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="registration:Make;console:Make"/>
+			<CallTarget Targets="registration:Make;console:Make;apackage:Make;packaged:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
