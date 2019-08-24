@@ -30,12 +30,12 @@ end;
 
 procedure TSomeRegistry.RegisterClass(AClass: TClass);
 begin
-  WriteLn(PChar('Adding: ' + AClass.ClassName));
+  WriteLn(PChar('Registry Adding: ' + AClass.ClassName));
 end;
 
 procedure TSomeRegistry.DeregisterClass(AClass: TClass);
 begin
-  WriteLn(PChar('Removing: ' + AClass.ClassName));
+  WriteLn(PChar('Registry Removing: ' + AClass.ClassName));
 end;
 
 initialization
