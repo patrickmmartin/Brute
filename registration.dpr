@@ -11,13 +11,13 @@ uses
 begin
 
   try
-    WriteLn('starting');
+    WriteLn('Program starting');
     WriteLn(PChar('Registration complete'));
   except
     on E:Exception do
       Writeln(E.Classname, ': ', E.Message);
   end;
 
-  Writeln('exiting');
+  Writeln('Program exiting');
 
 end.
