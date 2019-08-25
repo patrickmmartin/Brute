@@ -1,72 +1,72 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-		<PropertyGroup>
-			<ProjectGuid>{C63B1F96-D99C-48DD-9328-52FCC8BECD87}</ProjectGuid>
-		</PropertyGroup>
-		<ItemGroup>
-			<Projects Include="registration.dproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="console.dproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="apackage.dproj">
-				<Dependencies/>
-			</Projects>
-			<Projects Include="packaged.dproj">
-				<Dependencies>apackage.dproj</Dependencies>
-			</Projects>
-		</ItemGroup>
-		<ProjectExtensions>
-			<Borland.Personality>Default.Personality.12</Borland.Personality>
-			<Borland.ProjectType/>
-			<BorlandProject>
-				<Default.Personality/>
-			</BorlandProject>
-		</ProjectExtensions>
-		<Target Name="registration">
-			<MSBuild Projects="registration.dproj"/>
-		</Target>
-		<Target Name="registration:Clean">
-			<MSBuild Targets="Clean" Projects="registration.dproj"/>
-		</Target>
-		<Target Name="registration:Make">
-			<MSBuild Targets="Make" Projects="registration.dproj"/>
-		</Target>
-		<Target Name="console">
-			<MSBuild Projects="console.dproj"/>
-		</Target>
-		<Target Name="console:Clean">
-			<MSBuild Targets="Clean" Projects="console.dproj"/>
-		</Target>
-		<Target Name="console:Make">
-			<MSBuild Targets="Make" Projects="console.dproj"/>
-		</Target>
-		<Target Name="apackage">
-			<MSBuild Projects="apackage.dproj"/>
-		</Target>
-		<Target Name="apackage:Clean">
-			<MSBuild Targets="Clean" Projects="apackage.dproj"/>
-		</Target>
-		<Target Name="apackage:Make">
-			<MSBuild Targets="Make" Projects="apackage.dproj"/>
-		</Target>
-		<Target DependsOnTargets="apackage" Name="packaged">
-			<MSBuild Projects="packaged.dproj"/>
-		</Target>
-		<Target DependsOnTargets="apackage:Clean" Name="packaged:Clean">
-			<MSBuild Targets="Clean" Projects="packaged.dproj"/>
-		</Target>
-		<Target DependsOnTargets="apackage:Make" Name="packaged:Make">
-			<MSBuild Targets="Make" Projects="packaged.dproj"/>
-		</Target>
-		<Target Name="Build">
-			<CallTarget Targets="registration;console;apackage;packaged"/>
-		</Target>
-		<Target Name="Clean">
-			<CallTarget Targets="registration:Clean;console:Clean;apackage:Clean;packaged:Clean"/>
-		</Target>
-		<Target Name="Make">
-			<CallTarget Targets="registration:Make;console:Make;apackage:Make;packaged:Make"/>
-		</Target>
-		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
-	</Project>
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C63B1F96-D99C-48DD-9328-52FCC8BECD87}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="registration.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="console.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="apackage.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="packaged.dproj">
+            <Dependencies>apackage.dproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="registration">
+        <MSBuild Projects="registration.dproj"/>
+    </Target>
+    <Target Name="registration:Clean">
+        <MSBuild Projects="registration.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="registration:Make">
+        <MSBuild Projects="registration.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="console">
+        <MSBuild Projects="console.dproj"/>
+    </Target>
+    <Target Name="console:Clean">
+        <MSBuild Projects="console.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="console:Make">
+        <MSBuild Projects="console.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="apackage">
+        <MSBuild Projects="apackage.dproj"/>
+    </Target>
+    <Target Name="apackage:Clean">
+        <MSBuild Projects="apackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="apackage:Make">
+        <MSBuild Projects="apackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="packaged" DependsOnTargets="apackage">
+        <MSBuild Projects="packaged.dproj"/>
+    </Target>
+    <Target Name="packaged:Clean" DependsOnTargets="apackage:Clean">
+        <MSBuild Projects="packaged.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="packaged:Make" DependsOnTargets="apackage:Make">
+        <MSBuild Projects="packaged.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="registration;console;apackage;packaged"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="registration:Clean;console:Clean;apackage:Clean;packaged:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="registration:Make;console:Make;apackage:Make;packaged:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
